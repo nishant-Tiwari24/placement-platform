@@ -29,11 +29,11 @@ const PopularCompanies = () => {
   return (
     <div className="companies">
       <div className="container">
-        <h3>TOP COMPANIES</h3>
+        <h3 className="font-bold text-4xl">TOP COMPANIES</h3>
         <div className="banner">
           {companies.map((element) => {
             return (
-              <div className="card" key={element.id}>
+              <div className="card rounded-xl bg-zinc-200" key={element.id}>
                 <div className="content">
                   <div className="icon">{element.icon}</div>
                   <div className="text">

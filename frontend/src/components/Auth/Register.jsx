@@ -43,87 +43,98 @@ const Register = () => {
     }
   };
 
-  if(isAuthorized){
-    return <Navigate to={'/'}/>
+  if (isAuthorized) {
+    return <Navigate to={"/"} />;
   }
-
 
   return (
     <>
-      <section className="authPage">
-        <div className="container">
-          <div className="header">
-            <img src="/JobZeelogo.png" alt="logo" />
-            <h3>Create a new account</h3>
+      <section className="min-h-screen flex flex-col items-center justify-center bg-white text-black p-6">
+        <div className="w-full max-w-md">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-semibold mt-4">Create a new account</h3>
           </div>
           <form>
-            <div className="inputTag">
-              <label>Register As</label>
-              <div>
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Register As</label>
+              <div className="flex items-center border-black border-[1px] bg-zinc-100 rounded-lg">
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
+                >
                   <option value="">Select Role</option>
                   <option value="Employer">Employer</option>
                   <option value="Job Seeker">Job Seeker</option>
                 </select>
-                <FaRegUser />
+                <FaRegUser className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <div className="inputTag">
-              <label>Name</label>
-              <div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Name</label>
+              <div className="flex items-center border-black border-[1px] bg-zinc-100 rounded-lg">
                 <input
                   type="text"
                   placeholder="Zeeshan"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
                 />
-                <FaPencilAlt />
+                <FaPencilAlt className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <div className="inputTag">
-              <label>Email Address</label>
-              <div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Email Address</label>
+              <div className="flex items-center border-black border-[1px] bg-zinc-100 rounded-lg">
                 <input
                   type="email"
                   placeholder="zk@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
                 />
-                <MdOutlineMailOutline />
+                <MdOutlineMailOutline className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <div className="inputTag">
-              <label>Phone Number</label>
-              <div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Phone Number</label>
+              <div className="flex items-center border-black border-[1px] bg-zinc-100 rounded-lg">
                 <input
                   type="number"
                   placeholder="12345678"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
                 />
-                <FaPhoneFlip />
+                <FaPhoneFlip className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <div className="inputTag">
-              <label>Password</label>
-              <div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Password</label>
+              <div className="flex items-center border-black border-[1px] bg-zinc-100 rounded-lg">
                 <input
                   type="password"
                   placeholder="Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
                 />
-                <RiLock2Fill />
+                <RiLock2Fill className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <button type="submit" onClick={handleRegister}>
+            <button
+              type="submit"
+              onClick={handleRegister}
+              className="w-full py-3 bg-black text-white font-semibold rounded-lg hover:bg-zinc-800 transition duration-300"
+            >
               Register
             </button>
-            <Link to={"/login"}>Login Now</Link>
+            <div className="text-center mt-4">
+              <Link to="/login" className="text-sm text-zinc-600 hover:text-black">
+                Login Now !
+              </Link>
+            </div>
           </form>
-        </div>
-        <div className="banner">
-          <img src="/register.png" alt="login" />
         </div>
       </section>
     </>

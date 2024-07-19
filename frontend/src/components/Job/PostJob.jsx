@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../main";
+
 const PostJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -21,7 +22,7 @@ const PostJob = () => {
     e.preventDefault();
     if (salaryType === "Fixed Salary") {
       setSalaryFrom("");
-      setSalaryFrom("");
+      setSalaryTo("");
     } else if (salaryType === "Ranged Salary") {
       setFixedSalary("");
     } else {
@@ -74,20 +75,27 @@ const PostJob = () => {
 
   return (
     <>
-      <div className="job_post page">
-        <div className="container">
-          <h3>POST NEW JOB</h3>
-          <form onSubmit={handleJobPost}>
-            <div className="wrapper">
+      <div className="job_post page py-12 bg-zinc-100">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h3 className="text-4xl font-bold text-center mb-8 text-black mt-14">
+            Post a New Job With Details
+          </h3>
+          <form
+            onSubmit={handleJobPost}
+            className="bg-white p-8 rounded-xl shadow-md border md:max-w-5xl border-zinc-300"
+          >
+            <div className="wrapper flex flex-col md:flex-row gap-4 mb-4">
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Job Title"
+                className="input-field"
               />
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                className="input-field"
               >
                 <option value="">Select Category</option>
                 <option value="Graphics & Design">Graphics & Design</option>
@@ -114,18 +122,20 @@ const PostJob = () => {
                 <option value="Data Entry Operator">Data Entry Operator</option>
               </select>
             </div>
-            <div className="wrapper">
+            <div className="wrapper flex flex-col md:flex-row gap-4 mb-4">
               <input
                 type="text"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder="Country"
+                className="input-field"
               />
               <input
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="City"
+                className="input-field"
               />
             </div>
             <input
@@ -133,39 +143,44 @@ const PostJob = () => {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="Location"
+              className="input-field mb-4"
             />
-            <div className="salary_wrapper">
+            <div className="salary_wrapper mb-4">
               <select
                 value={salaryType}
                 onChange={(e) => setSalaryType(e.target.value)}
+                className="input-field"
               >
                 <option value="default">Select Salary Type</option>
                 <option value="Fixed Salary">Fixed Salary</option>
                 <option value="Ranged Salary">Ranged Salary</option>
               </select>
-              <div>
+              <div className="mt-4">
                 {salaryType === "default" ? (
-                  <p>Please provide Salary Type *</p>
+                  <p className="text-red-500">Please provide Salary Type *</p>
                 ) : salaryType === "Fixed Salary" ? (
                   <input
                     type="number"
                     placeholder="Enter Fixed Salary"
                     value={fixedSalary}
                     onChange={(e) => setFixedSalary(e.target.value)}
+                    className="input-field"
                   />
                 ) : (
-                  <div className="ranged_salary">
+                  <div className="ranged_salary flex gap-4">
                     <input
                       type="number"
                       placeholder="Salary From"
                       value={salaryFrom}
                       onChange={(e) => setSalaryFrom(e.target.value)}
+                      className="input-field"
                     />
                     <input
                       type="number"
                       placeholder="Salary To"
                       value={salaryTo}
                       onChange={(e) => setSalaryTo(e.target.value)}
+                      className="input-field"
                     />
                   </div>
                 )}
@@ -176,8 +191,14 @@ const PostJob = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Job Description"
+              className="bg-zinc-400 mb-4"
             />
-            <button type="submit">Create Job</button>
+            <button
+              type="submit"
+              className="bg-black text-white px-4 py-2 rounded hover:bg-zinc-800 transition"
+            >
+              Create Job
+            </button>
           </form>
         </div>
       </div>

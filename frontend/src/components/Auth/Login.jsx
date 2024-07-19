@@ -43,56 +43,67 @@ const Login = () => {
 
   return (
     <>
-      <section className="authPage">
-        <div className="container">
-          <div className="header">
-            <img src="/JobZeelogo.png" alt="logo" />
-            <h3>Login to your account</h3>
+      <section className="min-h-screen flex flex-col items-center justify-center bg-white text-black p-6">
+        <div className="w-full max-w-md">
+          <div className="text-center mb-8">
+            
+            <h3 className="text-2xl font-semibold mt-4">Login to your account</h3>
           </div>
           <form>
-            <div className="inputTag">
-              <label>Login As</label>
-              <div>
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Login As</label>
+              <div className="flex items-center bg-zinc-100 border-black border-[1px] rounded-lg">
+                <select 
+                  value={role} 
+                  onChange={(e) => setRole(e.target.value)} 
+                  className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
+                >
                   <option value="">Select Role</option>
                   <option value="Employer">Employer</option>
                   <option value="Job Seeker">Job Seeker</option>
                 </select>
-                <FaRegUser />
+                <FaRegUser size={24} className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <div className="inputTag">
-              <label>Email Address</label>
-              <div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Email Address</label>
+              <div className="flex items-center bg-zinc-100 border-black border-[1px] rounded-lg">
                 <input
                   type="email"
                   placeholder="zk@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="w-full p-3 bg-zinc-100 border-none focus:outline-none text-black"
                 />
-                <MdOutlineMailOutline />
+                <MdOutlineMailOutline size={24} className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <div className="inputTag">
-              <label>Password</label>
-              <div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Password</label>
+              <div className="flex items-center bg-zinc-100 border-black border-[1px] rounded-lg">
                 <input
                   type="password"
                   placeholder="Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
                 />
-                <RiLock2Fill />
+                <RiLock2Fill size={24} className="text-xl mx-2 text-black" />
               </div>
             </div>
-            <button type="submit" onClick={handleLogin}>
+            <button 
+              type="submit" 
+              onClick={handleLogin}
+              className="w-full py-3 bg-black text-white font-semibold rounded-lg hover:bg-zinc-800 transition duration-300"
+            >
               Login
             </button>
-            <Link to={"/register"}>Register Now</Link>
+            <div className="text-center mt-4">
+              <Link to="/register" className="text-sm text-zinc-600 hover:text-black">
+                Register Now ?
+              </Link>
+            </div>
           </form>
-        </div>
-        <div className="banner">
-          <img src="/login.png" alt="login" />
         </div>
       </section>
     </>

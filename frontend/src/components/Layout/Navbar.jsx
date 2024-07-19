@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../../main";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -27,50 +27,39 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={isAuthorized ? "navbarShow" : "navbarHide"}>
-      <div className="container">
-        <div className="logo">
-          <img src="/JobZee-logos__white.png" alt="logo" />
+    <nav className={`fixed w-full bg-black text-white p-4 shadow-lg ${isAuthorized ? "block" : "hidden"}`}>
+      <div className="container mx-auto flex justify-between items-center">
+        <div className="text-xl font-semibold">
+          Placement Portal
         </div>
-        <ul className={!show ? "menu" : "show-menu menu"}>
-          <li>
-            <Link to={"/"} onClick={() => setShow(false)}>
-              HOME
+        <ul className={`flex-col md:flex-row md:flex md:items-center absolute md:static bg-black w-full md:w-auto left-0 top-14 md:top-auto p-4 md:p-0 ${show ? "block" : "hidden"}`}>
+          <li className="md:ml-6">
+            <Link to="/" className="block py-2 md:py-0 hover:text-gray-300" onClick={() => setShow(false)}>Home</Link>
+          </li>
+          <li className="md:ml-6">
+            <Link to="/job/getall" className="block py-2 md:py-0 hover:text-gray-300" onClick={() => setShow(false)}>All Jobs</Link>
+          </li>
+          <li className="md:ml-6">
+            <Link to="/applications/me" className="block py-2 md:py-0 hover:text-gray-300 " onClick={() => setShow(false)}>
+              {user && user.role === "Employer" ? "Applicant's Application" : "My Application"}
             </Link>
           </li>
-          <li>
-            <Link to={"/job/getall"} onClick={() => setShow(false)}>
-              ALL JOBS
-            </Link>
-          </li>
-          <li>
-            <Link to={"/applications/me"} onClick={() => setShow(false)}>
-              {user && user.role === "Employer"
-                ? "APPLICANT'S APPLICATIONS"
-                : "MY APPLICATIONS"}
-            </Link>
-          </li>
-          {user && user.role === "Employer" ? (
+          {user && user.role === "Employer" && (
             <>
-              <li>
-                <Link to={"/job/post"} onClick={() => setShow(false)}>
-                  POST NEW JOB
-                </Link>
+              <li className="md:ml-6">
+                <Link to="/job/post" className="block py-2 md:py-0 hover:text-gray-300" onClick={() => setShow(false)}>Post Opportunity</Link>
               </li>
-              <li>
-                <Link to={"/job/me"} onClick={() => setShow(false)}>
-                  VIEW YOUR JOBS
-                </Link>
+              <li className="md:ml-6">
+                <Link to="/job/me" className="block py-2 md:py-0 hover:text-gray-300" onClick={() => setShow(false)}>View Your Jobs</Link>
               </li>
             </>
-          ) : (
-            <></>
           )}
-
-          <button onClick={handleLogout}>LOGOUT</button>
+          <li className="md:ml-6">
+            <button onClick={handleLogout} className="block py-4 md:py-1 bg-zinc-500 px-5 hover:text-gray-300 rounded-lg">Logout</button>
+          </li>
         </ul>
-        <div className="hamburger">
-          <GiHamburgerMenu onClick={() => setShow(!show)} />
+        <div className="md:hidden">
+          <GiHamburgerMenu onClick={() => setShow(!show)} className="text-2xl cursor-pointer" />
         </div>
       </div>
     </nav>

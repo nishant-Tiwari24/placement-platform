@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 * {
   margin: 0;
@@ -194,6 +197,7 @@ p {
     display: none;
   }
 }
+
 
 .footerShow {
   background: #18191c;
@@ -663,28 +667,28 @@ p {
 
 .jobDetail {
   background: #f1f3f6;
-  padding: 50px 20px;
+  padding: 10px 10px;
 }
 .jobDetail .container {
-  max-width: 1500px;
-  min-width: 1500px;
+  max-width: 1000px;
+  min-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .jobDetail .container .banner {
   width: 100%;
-  min-height: 767px;
-  padding: 50px 0;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 10px;
   justify-content: center;
 }
 .jobDetail .container .banner p {
   font-weight: bold;
-  color: #2d5649;
+  color: #000000;
 }
 .jobDetail .container .banner p span {
   color: #18191c;
@@ -868,90 +872,75 @@ p {
   }
 }
 
-.job_post {
-  background: #f1f3f6;
-  padding: 50px 20px;
-  min-height: 870px;
-  display: flex;
-  align-items: center;
-}
 .job_post .container {
-  max-width: 1500px;
-  min-width: 1500px;
-  display: flex;
-  flex-direction: column;
-  gap: 35px;
-  align-items: center;
-  margin: 0 auto;
+  background-color: transparent; 
+  padding: 2rem;
+  border-radius: 10px; 
 }
+
 .job_post .container form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  background: #ffffff; 
+  border-radius: 12px; 
+  padding: 2rem; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #e2e8f0;
 }
+
 .job_post .container form .wrapper {
   display: flex;
-  gap: 5vw;
+  flex-direction: column; 
+  gap: 1.5rem;
 }
+
+
 .job_post .container form .wrapper input,
 .job_post .container form .wrapper select {
   flex: 1;
-  font-size: 20px;
-  padding: 7px 4px;
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid gray;
+  font-size: 16px; 
+  padding: 12px;
+  border-radius: 8px; 
+  border: 1px solid #e2e8f0; 
+  background-color: #f1f1f1; 
 }
+
 .job_post .container form input,
 .job_post .container form textarea {
-  font-size: 20px;
-  padding: 7px 4px;
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid gray;
+  font-size: 16px;
+  padding: 12px; 
+  width: 100%; 
+  background: #f9f9f9; 
+  border-radius: 8px; 
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box; 
 }
-.job_post .container form input:focus,
-.job_post .container form .wrapper input:focus,
-.job_post .container form .wrapper select:focus,
-.job_post .container form textarea:focus,
-.job_post .container form .salary_wrapper select:focus {
-  outline: none;
+
+.job_post .container form input,
+.job_post .container form textarea {
+  border-bottom: none; /* No bottom border */
 }
-.job_post .container form .salary_wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.job_post .container form .salary_wrapper p {
-  color: #d9534f;
-  font-size: 14px;
-  font-weight: 300;
-}
-.job_post .container form .salary_wrapper select {
-  width: fit-content;
-  font-size: 20px;
-  padding: 7px 4px;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid gray;
-}
-.job_post .container form .salary_wrapper .ranged_salary {
-  display: flex;
-  gap: 5vw;
-}
+
+/* Styling for the button */
 .job_post .container form button {
-  width: 100%;
-  background: #2d5649;
-  font-size: 20px;
-  padding: 10px 30px;
-  border: none;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 2px;
+  background-color: #000000; /* Black background */
+  color: #ffffff; /* White text */
+  padding: 12px 20px; /* Padding */
+  border: none; /* No border */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
+
+.job_post .container form button:hover {
+  background-color: #333333; 
+}
+
+.job_post .container form select {
+  background: #f1f1f1; 
+  padding: 10px;
+  border-radius: 10px;
+}
+
 @media (max-width: 1520px) {
   .job_post .container {
     min-width: 100%;
@@ -971,183 +960,204 @@ p {
     width: 100%;
   }
 }
+
+.jobs.page {
+  background: #f1f3f6;
+  padding: 50px 20px;
+}
+.jobs.page .container {
+  display: flex;
+  max-width: 1500px;
+  margin: 0 auto;
+  gap: 20px;
+}
+.filter-sidebar {
+  width: 250px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.filter-sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.filter-group {
+  margin-bottom: 15px;
+}
+.filter-group label {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+.filter-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.job-listing {
+  flex: 1;
+}
+.job-listing h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2d5649;
+  margin-bottom: 30px;
+}
+.jobs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.jobs-table th, .jobs-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+.jobs-table th {
+  background: #2d5649;
+  color: #fff;
+  font-size: 18px;
+}
+.jobs-table td {
+  font-size: 16px;
+  color: #333;
+}
+.jobs-table tr:hover {
+  background: #f9f9f9;
+}
+.jobs-table td a {
+  color: #2d5649;
+  text-decoration: none;
+}
+.jobs-table td a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .filter-sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .job-listing h1 {
+    font-size: 28px;
+  }
+  .jobs-table th, .jobs-table td {
+    padding: 10px;
+  }
+}
+
+
 .myJobs {
   background: #f1f3f6;
   padding: 50px 20px;
   min-height: 870px;
 }
+
 .myJobs .container {
-  min-width: 1500px;
+  min-width: 100%;
   max-width: 1500px;
   margin: 0 auto;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 35px;
 }
-.myJobs .container .banner {
+
+.myJobs table {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  flex-direction: column;
+  margin-top: 20px;
+  border-radius: 20px;
 }
-.myJobs .container .banner .card {
-  width: 100%;
-  display: flex;
-  gap: 20px;
-  border-bottom: 1px solid #18191c;
-  padding: 10px 0;
+
+.myJobs th, .myJobs td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
-.myJobs .container .banner .card .content {
-  flex: 3;
-  display: flex;
-  gap: 20px;
-}
-.myJobs .container .banner .card .content span {
-  font-size: 20px;
-  margin-right: 6px;
+
+.myJobs th {
+  background: #060606;
   font-weight: bold;
 }
-.myJobs .container .banner .card .content input,
-.myJobs .container .banner .card .content select {
-  background: transparent;
-  font-size: 16px;
+
+.myJobs td input, .myJobs td select, .myJobs td textarea {
+  width: 100%;
   border: none;
-  color: #18191c;
-  padding: 7px 4px;
-}
-.myJobs .container .banner .card .content input:enabled,
-.myJobs .container .banner .card .content select:enabled {
-  border-bottom: 1px solid gainsboro;
-}
-.myJobs .container .banner .card .content input:disabled,
-.myJobs .container .banner .card .content select:disabled {
-  color: gray;
-}
-.myJobs .container .banner .card .content .short_fields {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.myJobs .container .banner .card .content .long_field {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.myJobs .container .banner .card .content .short_fields div,
-.myJobs .container .banner .card .content .long_field div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.myJobs .container .banner .card .content .short_fields div div {
-  display: flex;
-  gap: 12px;
-  flex-direction: row;
-}
-.myJobs .container .banner .card .content .long_field textarea {
   background: transparent;
   font-size: 16px;
   color: #18191c;
-  border: none;
-  padding: 7px 4px;
-  height: fit-content;
+  
 }
-.myJobs .container .banner .card .content .long_field textarea:disabled {
+
+.myJobs td input:disabled, .myJobs td select:disabled, .myJobs td textarea:disabled {
   color: gray;
 }
-.myJobs .container .banner .card .content .long_field textarea:enabled {
-  border-bottom: 1px solid gainsboro;
-}
-.myJobs .container .banner .card .content .long_field textarea:focus,
-.myJobs .container .banner .card .content input:focus {
+
+.myJobs td input:focus, .myJobs td select:focus, .myJobs td textarea:focus {
   outline: none;
 }
-.myJobs .container .banner .card .button_wrapper {
-  flex: 1;
+
+.myJobs .button_wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
   justify-content: center;
+  gap: 10px;
 }
-.myJobs .container .banner .card .button_wrapper .edit_btn,
-.myJobs .container .banner .card .button_wrapper .delete_btn {
-  width: 120px;
-  color: #18191c;
+
+.myJobs .button_wrapper button {
+  padding: 7px 15px;
+  border: none;
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 7px;
-  border: none;
-  background: #ffc107;
+  cursor: pointer;
 }
-.myJobs .container .banner .card .button_wrapper .delete_btn {
+
+.myJobs .button_wrapper .edit_btn {
+  background: #ffc107;
+  color: #18191c;
+}
+
+.myJobs .button_wrapper .delete_btn {
   background: #d9534f;
   color: #f1f3f6;
 }
-.myJobs .container .banner .card .button_wrapper .check_btn {
+
+.myJobs .button_wrapper .check_btn {
   background: transparent;
   color: #184235;
   border: 1px solid #184235;
   border-radius: 7px;
-  width: 50px;
   padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
 }
-.myJobs .container .banner .card .button_wrapper .check_btn:hover {
-  transition: all 0.3s;
+
+.myJobs .button_wrapper .check_btn:hover {
   background: #184235;
   color: #f1f3f6;
 }
-.myJobs .container .banner .card .button_wrapper .cross_btn {
+
+.myJobs .button_wrapper .cross_btn {
   background: transparent;
   color: #d9534f;
   border: 1px solid #d9534f;
   border-radius: 7px;
-  width: 50px;
   padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
 }
-.myJobs .container .banner .card .button_wrapper .cross_btn:hover {
-  transition: all 0.3s;
+
+.myJobs .button_wrapper .cross_btn:hover {
   background: #d9534f;
   color: #f1f3f6;
 }
-.myJobs .container .banner .card .button_wrapper .edit_btn_wrapper {
-  gap: 20px;
-  display: flex;
-}
-@media (max-width: 1520px) {
-  .myJobs .container {
-    min-width: 100%;
-  }
-}
+
 @media (max-width: 830px) {
-  .myJobs .container .banner .card {
-    flex-direction: column;
-  }
-  .myJobs .container .banner .card .content {
-    flex-direction: column;
-  }
-  .myJobs .container .banner .card .content .long_field,
-  .myJobs .container .banner .card .content .short_fields {
-    gap: 8px;
-  }
-  .myJobs .container .banner .card .content .short_fields div,
-  .myJobs .container .banner .card .content .long_fields div {
-    gap: 8px;
+  .myJobs table {
+    font-size: 14px;
   }
 }
+
 nav {
   background: #18191c;
   padding: 0 20px;
