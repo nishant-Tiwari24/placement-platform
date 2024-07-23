@@ -1,7 +1,9 @@
+
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -28,16 +30,102 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     required: [true, "Please select a role"],
-    enum: ["Job Seeker", "Employer"],
+    enum: ["Student", "Employer"],
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  passCode: {
+    type: String,
+    default:""
+  },  
+  special: {
+    type: String, 
+    enum: ["special", ""],
+    default: ""
+  },
+  emailAlt: String,
+  firstName: String,
+  fathersName: String,
+  mothersName: String,
+  middleName: String,
+  lastName: String,
+  candidateFullName: String,
+  branch: String,
+  classRollNumber: String,
+  prnNumber: String,
+  studentMobileNumber: String,
+  parentMobileNumber: String,
+  panCardNumber: String,
+  aadharCardNumber: String,
+  residentialAddress: String,
+  currentLocation: String,
+  currentAddress: String,
+  permanentResidenceCity: String,
+  permanentResidenceState: String,
+  dateOfBirth: Date,
+  gender: String,
+  lgbtq: String,
+  physicallyDisabled: String,
+  physicalDisabilityDetails: String,
+  nationality: String,
+  foreignLanguage: String,
+  foreignLanguageProficiency: String,
+  schoolName: String,
+  boardName: String,
+  yearOfPassing10th: String,
+  percentage10th: String,
+  yearGapAfter10th: String,
+  schoolCollegeName12th: String,
+  boardName12th: String,
+  yearOfPassing12th: String,
+  percentage12th: String,
+  yearGapAfter12th: String,
+  schoolCollegeNameDiploma: String,
+  boardNameDiploma: String,
+  yearOfPassingDiploma: String,
+  diplomaGraduatedState: String,
+  sem1DiplomaPercentage: String,
+  sem2DiplomaPercentage: String,
+  sem3DiplomaPercentage: String,
+  sem4DiplomaPercentage: String,
+  sem5DiplomaPercentage: String,
+  sem6DiplomaPercentage: String,
+  aggregatePercentageDiploma: String,
+  yearGapAfterDiploma: String,
+  currentPursuingDegree: String,
+  yearOfAdmission: String,
+  sem1CGPA: String,
+  sem1PassingDate: String,
+  sem2CGPA: String,
+  sem2PassingDate: String,
+  sem3CGPA: String,
+  sem3PassingDate: String,
+  sem4CGPA: String,
+  sem4PassingDate: String,
+  sem5CGPA: String,
+  sem5PassingDate: String,
+  aggregateCGPITillSem5: String,
+  aggregatePercentageTillSem5: String,
+  yearDropInUG: String,
+  deadKT: String,
+  totalDeadKT: String,
+  liveKT: String,
+  totalLiveKT: String,
+  totalInternalKT: String,
+  totalExternalKT: String,
+  yearOfEducationGap: String,
+  additionalQualification: String,
+  technologiesKnown: String,
+  workExperienceMonths: String,
+  internshipCompany: String,
+  internshipRole: String,
+  postGraduationCGPA: String,
+  workExperienceYears: String,
 });
 
-
-//ENCRYPTING THE PASSWORD WHEN THE USER REGISTERS OR MODIFIES HIS PASSWORD
+// Encrypting the password before saving the user
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
@@ -45,12 +133,12 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 10);
 });
 
-//COMPARING THE USER PASSWORD ENTERED BY USER WITH THE USER SAVED PASSWORD
+// Comparing user password with the hashed password in the database
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-//GENERATING A JWT TOKEN WHEN A USER REGISTERS OR LOGINS, IT DEPENDS ON OUR CODE THAT WHEN DO WE NEED TO GENERATE THE JWT TOKEN WHEN THE USER LOGIN OR REGISTER OR FOR BOTH. 
+// Generating JWT token
 userSchema.methods.getJWTToken = function () {
   return jwt.sign({ id: this._id }, '123', {
     expiresIn: '1d',
@@ -58,3 +146,6 @@ userSchema.methods.getJWTToken = function () {
 };
 
 export const User = mongoose.model("User", userSchema);
+
+
+

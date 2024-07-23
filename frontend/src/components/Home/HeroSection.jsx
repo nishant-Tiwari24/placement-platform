@@ -11,7 +11,7 @@ const HeroSection = () => {
     },
     {
       id: 2,
-      title: "91220",
+      title: "91,220",
       subTitle: "Companies",
       icon: <FaBuilding />,
     },
@@ -30,18 +30,15 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="bg-white text-black py-20 x font-poppins">
+    <div className="bg-white text-black py-20 font-poppins">
       <div className="container mx-auto flex flex-col items-center text-center px-4">
         <div className="title mb-10 pt-32">
           <h1 className="text-7xl font-extrabold">Find a job that suits</h1>
           <h1 className="text-7xl font-extrabold">your interests and skills</h1>
           <p className="text-gray-600 mt-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-            voluptate repellat modi quidem aliquid eaque ducimus ipsa et,
-            facere mollitia!
+            Explore thousands of job opportunities from top companies. Whether you're a seasoned professional or a fresh graduate, find the perfect role that matches your career aspirations.
           </p>
         </div>
-        
       </div>
       <div className="details grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-36">
         {details.map((element) => (

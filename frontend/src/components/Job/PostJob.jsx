@@ -60,6 +60,18 @@ const PostJob = () => {
           },
         }
       )
+
+      setTitle(""), 
+      setDescription(""), 
+      setCategory(""), 
+      setCountry(""), 
+      setCity(""), 
+      setLocation(""), 
+      setSalaryFrom(""), 
+      setSalaryTo(""), 
+      setFixedSalary(""), 
+      setSalaryType("")
+
       .then((res) => {
         toast.success(res.data.message);
       })
@@ -69,7 +81,7 @@ const PostJob = () => {
   };
 
   const navigateTo = useNavigate();
-  if (!isAuthorized || (user && user.role !== "Employer")) {
+  if (!isAuthorized || (user && (user.role === "Student" && user.special === "" ))) {
     navigateTo("/");
   }
 

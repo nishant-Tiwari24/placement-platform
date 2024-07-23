@@ -43,6 +43,7 @@ const Login = () => {
 
   return (
     <>
+{/* <<<<<<< HEAD */}
       <section className="min-h-screen flex flex-col items-center justify-center bg-white text-black p-6">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
@@ -59,8 +60,8 @@ const Login = () => {
                   className="w-full p-3 bg-transparent border-none focus:outline-none text-black"
                 >
                   <option value="">Select Role</option>
-                  <option value="Employer">Employer</option>
-                  <option value="Job Seeker">Job Seeker</option>
+                  <option value="Employer">Teacher</option>
+                  <option value="Student">Student</option>
                 </select>
                 <FaRegUser size={24} className="text-xl mx-2 text-black" />
               </div>
@@ -98,11 +99,14 @@ const Login = () => {
             >
               Login
             </button>
+
             <div className="text-center mt-4">
-              <Link to="/register" className="text-sm text-zinc-600 hover:text-black">
+              {/* <Link to="/register" className="text-sm text-zinc-600 hover:text-black">
                 Register Now ?
-              </Link>
+              </Link> */}
             </div>
+            {/* <Link to={"/register"}>Register Now</Link> */}
+
           </form>
         </div>
       </section>

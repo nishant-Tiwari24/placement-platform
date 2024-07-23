@@ -2,7 +2,13 @@ import { catchAsyncErrors } from "../middlewares/catchAsyncError.js";
 import ErrorHandler from "../middlewares/error.js";
 import { Application } from "../models/applicationSchema.js";
 import { Job } from "../models/jobSchema.js";
-import cloudinary from "cloudinary";
+import cloudinary from "cloudinary"
+
+cloudinary.v2.config({
+  cloud_name: "diyuxn0ik",
+  api_key: "712983282771923",
+  api_secret: "sz6MvqBsKL-_FGCRFvVY-Kv3msg"
+});
 
 export const postApplication = catchAsyncErrors(async (req, res, next) => {
   const { role } = req.user;
@@ -16,7 +22,7 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   }
 
   const { resume } = req.files;
-  const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
+  const allowedFormats = ["application/pdf", "image/png", "image/jpeg", "image/webp"];
   if (!allowedFormats.includes(resume.mimetype)) {
     return next(
       new ErrorHandler("Invalid file type. Please upload a PNG file.", 400)
@@ -36,7 +42,7 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   const { name, email, coverLetter, phone, address, jobId } = req.body;
   const applicantID = {
     user: req.user._id,
-    role: "Job Seeker",
+    role: "Student",
   };
   if (!jobId) {
     return next(new ErrorHandler("Job not found!", 404));
@@ -70,11 +76,14 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
     address,
     applicantID,
     employerID,
+    jobId: jobDetails._id,
     resume: {
       public_id: cloudinaryResponse.public_id,
       url: cloudinaryResponse.secure_url,
     },
   });
+
+  console.log(application);
   res.status(200).json({
     success: true,
     message: "Application Submitted!",
@@ -85,7 +94,7 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
 export const employerGetAllApplications = catchAsyncErrors(
   async (req, res, next) => {
     const { role } = req.user;
-    if (role === "Job Seeker") {
+    if (role === "Student") {
       return next(
         new ErrorHandler("Job Seeker not allowed to access this resource.", 400)
       );
@@ -101,8 +110,8 @@ export const employerGetAllApplications = catchAsyncErrors(
 
 export const jobseekerGetAllApplications = catchAsyncErrors(
   async (req, res, next) => {
-    const { role } = req.user;
-    if (role === "Employer") {
+    const { role, special } = req.user;
+    if (role === "Employer" && special === "special") {
       return next(
         new ErrorHandler("Employer not allowed to access this resource.", 400)
       );
@@ -134,5 +143,22 @@ export const jobseekerDeleteApplication = catchAsyncErrors(
       success: true,
       message: "Application Deleted!",
     });
+  }
+);
+
+
+
+export const getApplicationById = catchAsyncErrors(
+  async(req, res, next)=>{
+    const { id } = req.params;
+    const application = await Application.find({jobId: id});
+    if (!application) {
+      return next(new ErrorHandler("Application not found!", 404));
+    }
+    res.status(200).json({
+      success: true,
+      message: "got applications",
+      application
+    })
   }
 );

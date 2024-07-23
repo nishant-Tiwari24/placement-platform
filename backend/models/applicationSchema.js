@@ -35,6 +35,11 @@ const applicationSchema = new mongoose.Schema({
       required: true,
     },
   },
+  jobId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Job",
+    required: true, 
+  },
   applicantID: {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -43,7 +48,7 @@ const applicationSchema = new mongoose.Schema({
     },
     role: {
       type: String,
-      enum: ["Job Seeker"],
+      enum: ["Student"],
       required: true,
     },
   },

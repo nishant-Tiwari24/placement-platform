@@ -16,6 +16,11 @@ import MyApplications from "./components/Application/MyApplications";
 import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJobs";
+import TeacherInvite from "./components/Invite/TeacherInvite";
+import ProfilePage from "./components/Layout/ProfilePage";
+import StudentApplication from "./components/Application/StudentApplication";
+import StudentProfile from "./components/Layout/StudentProfile";
+
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
@@ -43,15 +48,20 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register/student" element={<Register />} />
           <Route path="/" element={<Home />} />
           <Route path="/job/getall" element={<Jobs />} />
           <Route path="/job/:id" element={<JobDetails />} />
           <Route path="/application/:id" element={<Application />} />
-          <Route path="/applications/me" element={<MyApplications />} />
+          <Route path="/applications/me" element={<StudentApplication />} />
+          <Route path="/applications/jobs/:ID" element={<MyApplications />} />
           <Route path="/job/post" element={<PostJob />} />
           <Route path="/job/me" element={<MyJobs />} />
+          <Route path="/invite/student" element={<TeacherInvite />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/profile/student" element={<ProfilePage />} />
+          <Route path="/student/:id" element={<StudentProfile/>} />
+
         </Routes>
         <Footer />
         <Toaster />
